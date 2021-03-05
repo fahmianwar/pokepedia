@@ -1,34 +1,205 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <title>Pokepedia</title>
+    <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <!-- Custom styles for this template -->
+  <link href="album.css" rel="stylesheet">
+</head>
+<body>
+  
+<header>
+<div class="collapse bg-dark" id="navbarHeader">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-7 py-4">
+        <h4 class="text-white">About</h4>
+        <p class="text-muted">Pokepedia is tools to catch pokemon.</p>
+      </div>
+      <div class="col-sm-4 offset-md-1 py-4">
+        <ul class="list-unstyled">
+          <li><a href="https://www.tiwtter.com/fahmianwar" class="text-white">Follow on Twitter</a></li>
+          <li><a href="https://www.github.com/fahmianwar/pokepedia" class="text-white">Github Pokepedia</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="navbar navbar-dark bg-dark shadow-sm">
+  <div class="container d-flex justify-content-between">
+    <a href="./" class="navbar-brand d-flex align-items-center">
+      <svg>
+      <!-- center and scale down
+        translate to move the transform-origin in the center of the svg
+        scale to avoid cropping when rotating / animating the pokeball
+      -->
+      <g transform="translate(50 50) scale(0.8)">
+        <!-- stars positioned in the top right/left of the ball
+            scaled to (0 0) by default
+            scale to (1 1) for the success animation
+        -->
+        <g class="stars" transform="scale(0)">
+          <path
+            fill="#303030"
+            stroke="#303030"
+            stroke-width="3"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            fill="none"
+            d="M -50 -50 l 4.5 0 l 2.5 -4.5 l 2.5 4.5 l 4.5 0 l -3.5 3.5 l 1.5 5 l -5 -2.5 l -5 2.5 l 1.5 -5 l -3.5 -3.5"
+          ></path>
+          <path
+            fill="#303030"
+            stroke="#303030"
+            stroke-width="3"
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            fill="none"
+            d="M 36 -50 l 4.5 0 l 2.5 -4.5 l 2.5 4.5 l 4.5 0 l -3.5 3.5 l 1.5 5 l -5 -2.5 l -5 2.5 l 1.5 -5 l -3.5 -3.5"
+          ></path>
+        </g>
+        <!-- group to move the transform origin to the bottom of the svg -->
+        <g transform="translate(0 50)">
+          <g class="gravity"><!-- rotate this group in the [-10, 10] range for the shake animation -->
+            <g transform="translate(0 -50)">
+              <!-- group wrapping the pokeball itself -->
+              <g class="ball" transform="scale(1 1)"><!-- scale this group to (1 0.95) for the success animation-->
+                <g class="bottom"><!-- translate this group downwards to (0, 10) for the failure animation -->
+                  <!-- white semicircle -->
+                  <path
+                    fill="#ffffff"
+                    stroke="#303030"
+                    stroke-width="5"
+                    d="M -47.5 0 a 47.5 47.5 0 0 0 95 0z"
+                  ></path>
+                </g>
+                <g class="top"><!-- translate this group upwards to (0, 10) for the failure animation -->
+                  <!-- red semicircle, no stroke -->
+                  <path
+                    fill="#f15d5f"
+                    d="M -47.5 0 a 47.5 47.5 0 0 1 95 0"
+                  ></path>
+                  <!-- white dashes making up the light's reflection -->
+                  <path
+                    fill="none"
+                    stroke="#ffffff"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                    stroke-dasharray="0 15 9 9 20 100"
+                    d="M -38 -0 a 38 38 0 0 1 76 0"
+                  ></path>
+                  <!-- stroke for the red semicircle, to hide the first white dash -->
+                  <path
+                    fill="none"
+                    stroke="#303030"
+                    stroke-width="5"
+                    d="M -47.5 0 a 47.5 47.5 0 0 1 95 0z"
+                  ></path>
+                </g>
+    
+                <!-- arcs positioned between the top and bottom halves -->
+                <g class="open" transform="scale(1 0)"><!-- scale this group to (1 1) for the failure animation-->
+                  <path
+                    fill="#303030"
+                    stroke="#303030"
+                    stroke-width="5"
+                    stroke-linejoin="round"
+                    d="M -47.5 -10 a 190 190 0 0 1 95 0 a 190 190 0 0 1 -95 0"
+                  ></path>
+                  <path
+                    fill="#303030"
+                    stroke="#303030"
+                    stroke-width="5"
+                    stroke-linejoin="round"
+                    d="M -47.5 5 a 160 160 0 0 0 95 0 a 180 180 0 0 0 -95 0"
+                  ></path>
+                </g>
+    
+                <!-- circles describing the center of the pokeball -->
+                <g class="center"><!-- translate this group upwards to (0 -15) or (0 -20) for the failure animation (more than the top to fake the opening) -->
+                  <circle
+                    fill="#ffffff"
+                    stroke="#303030"
+                    stroke-width="5"
+                    cx="0"
+                    cy="0"
+                    r="12"
+                  ></circle>
+                  <circle
+                    fill="#ffffff"
+                    stroke="#303030"
+                    stroke-width="3"
+                    cx="0"
+                    cy="0"
+                    r="6"
+                  ></circle>
+                  <!-- innermost circle highlighting the pokeball with a red accent color -->
+                  <g class="inner" opacity="0"><!-- set opacity to 1 to show the highlight -->
+                    <circle
+                      fill="#f15d5f"
+                      cx="0"
+                      cy="0"
+                      r="4.5"
+                    ></circle>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+      <strong>Pokepedia</strong>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</div>
+</header>
+
+<main role="main">
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1>Pokepedia</h1>
+    <p class="lead text-muted">Collect pokemon in Pokepedia.</p>
+    <p>
+      <a href="/pokemonList" class="btn btn-primary my-2">Pokemon List</a>
+    </p>
+  </div>
+</section>
+
+<div class="album py-5 bg-light">
+  <div class="container">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div class="row" id="row"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +210,184 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-sm" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Catch Pokemon</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <svg class="pokeball"
+  viewBox="0 0 100 100"
+>
+  <!-- center and scale down
+    translate to move the transform-origin in the center of the svg
+    scale to avoid cropping when rotating / animating the pokeball
+  -->
+  <g transform="translate(50 50) scale(0.8)">
+    <!-- stars positioned in the top right/left of the ball
+        scaled to (0 0) by default
+        scale to (1 1) for the success animation
+    -->
+    <g class="stars" transform="scale(0)">
+      <path
+        fill="#303030"
+        stroke="#303030"
+        stroke-width="3"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        fill="none"
+        d="M -50 -50 l 4.5 0 l 2.5 -4.5 l 2.5 4.5 l 4.5 0 l -3.5 3.5 l 1.5 5 l -5 -2.5 l -5 2.5 l 1.5 -5 l -3.5 -3.5"
+      ></path>
+      <path
+        fill="#303030"
+        stroke="#303030"
+        stroke-width="3"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        fill="none"
+        d="M 36 -50 l 4.5 0 l 2.5 -4.5 l 2.5 4.5 l 4.5 0 l -3.5 3.5 l 1.5 5 l -5 -2.5 l -5 2.5 l 1.5 -5 l -3.5 -3.5"
+      ></path>
+    </g>
+    <!-- group to move the transform origin to the bottom of the svg -->
+    <g transform="translate(0 50)">
+      <g class="gravity"><!-- rotate this group in the [-10, 10] range for the shake animation -->
+        <g transform="translate(0 -50)">
+          <!-- group wrapping the pokeball itself -->
+          <g class="ball" transform="scale(1 1)"><!-- scale this group to (1 0.95) for the success animation-->
+            <g class="bottom"><!-- translate this group downwards to (0, 10) for the failure animation -->
+              <!-- white semicircle -->
+              <path
+                fill="#ffffff"
+                stroke="#303030"
+                stroke-width="5"
+                d="M -47.5 0 a 47.5 47.5 0 0 0 95 0z"
+              ></path>
+            </g>
+            <g class="top"><!-- translate this group upwards to (0, 10) for the failure animation -->
+              <!-- red semicircle, no stroke -->
+              <path
+                fill="#f15d5f"
+                d="M -47.5 0 a 47.5 47.5 0 0 1 95 0"
+              ></path>
+              <!-- white dashes making up the light's reflection -->
+              <path
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="5"
+                stroke-linecap="round"
+                stroke-dasharray="0 15 9 9 20 100"
+                d="M -38 -0 a 38 38 0 0 1 76 0"
+              ></path>
+              <!-- stroke for the red semicircle, to hide the first white dash -->
+              <path
+                fill="none"
+                stroke="#303030"
+                stroke-width="5"
+                d="M -47.5 0 a 47.5 47.5 0 0 1 95 0z"
+              ></path>
+            </g>
+
+            <!-- arcs positioned between the top and bottom halves -->
+            <g class="open" transform="scale(1 0)"><!-- scale this group to (1 1) for the failure animation-->
+              <path
+                fill="#303030"
+                stroke="#303030"
+                stroke-width="5"
+                stroke-linejoin="round"
+                d="M -47.5 -10 a 190 190 0 0 1 95 0 a 190 190 0 0 1 -95 0"
+              ></path>
+              <path
+                fill="#303030"
+                stroke="#303030"
+                stroke-width="5"
+                stroke-linejoin="round"
+                d="M -47.5 5 a 160 160 0 0 0 95 0 a 180 180 0 0 0 -95 0"
+              ></path>
+            </g>
+
+            <!-- circles describing the center of the pokeball -->
+            <g class="center"><!-- translate this group upwards to (0 -15) or (0 -20) for the failure animation (more than the top to fake the opening) -->
+              <circle
+                fill="#ffffff"
+                stroke="#303030"
+                stroke-width="5"
+                cx="0"
+                cy="0"
+                r="12"
+              ></circle>
+              <circle
+                fill="#ffffff"
+                stroke="#303030"
+                stroke-width="3"
+                cx="0"
+                cy="0"
+                r="6"
+              ></circle>
+              <!-- innermost circle highlighting the pokeball with a red accent color -->
+              <g class="inner" opacity="0"><!-- set opacity to 1 to show the highlight -->
+                <circle
+                  fill="#f15d5f"
+                  cx="0"
+                  cy="0"
+                  r="4.5"
+                ></circle>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Pokemon List</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+  <!-- Optional JavaScript; choose one of the two! -->
+<script type="text/javascript">
+  function save(coba) {
+    if(localStorage.getItem("pokemonList")===null){
+        var pokemonList = [];
+        localStorage.setItem("pokemonList", JSON.stringify(pokemonList));
+        dataPokemonList.push(coba);
+        localStorage.setItem("pokemonList", JSON.stringify(dataPokemonList));
+    }else{
+        var dataPokemonList = JSON.parse(localStorage.getItem("pokemonList"));
+        dataPokemonList.push(coba);
+        localStorage.setItem("pokemonList", JSON.stringify(dataPokemonList));
+    }
+  }
+
+  $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var recipient = button.data('whatever') 
+
+  var modal = $(this)
+  modal.find('.pokemonName').text('New message to ' + recipient)
+  modal.hide(1000);
+})
+  </script>
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+  -->
+  
+</body>
 </html>

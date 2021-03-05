@@ -1,0 +1,46 @@
+.jumbotron {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0;
+    background-color: #fff;
+  }
+  @media (min-width: 768px) {
+    .jumbotron {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+  
+  .jumbotron p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .jumbotron h1 {
+    font-weight: 300;
+  }
+  
+  .jumbotron .container {
+    max-width: 40rem;
+  }
+  
+  footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  footer p {
+    margin-bottom: .25rem;
+  }
+
+.pokeball{
+    animation: shake 1.25s cubic-bezier(.36,.07,.19,.97) infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0) rotate(0); }
+    20% { transform: translate(-10px, 0) rotate(-20deg); }
+    30% { transform: translate(10px, 0) rotate(20deg); }
+    50% { transform: translate(-10px, 0) rotate(-10deg); }
+    60% { transform: translate(10px, 0) rotate(10deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+  }
